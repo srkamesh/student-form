@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!----Css Connection-->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-----Meta Tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-----Form Box-->
+
+    <section id="Form-container">
+        <h3 id="head"> Student Details </h3>
+
+        <form id="s-info">
+            <div class="studentDetails">
+            <label for="Name"> Name</label>
+            <input type="text" id="name" name="Name" required>
+            </div>
+            <div class="studentDetails">
+            <label for="Age"> Age </label>
+            <input type="text" id ="age" name="Age" required>
+            </div>
+            <div class="studentDetails">
+            <label for="Email"> Email </label>
+            <input type="text" id="email" name="Email" required>
+            </div>
+            <div class="studentDetails">
+            <label for="Gender"> Gender </label>
+            <select id="gender">
+                <option> Select</option>
+                <option> Male </option>
+                <option> Female </option>
+                <option> Other </option>
+            </select>
+            </div>
+            <div class="studentDetails">
+            <label for="department"> Department</label>
+            <select id="department">
+                <option> Select</option>
+                <option> Civil </option>
+                <option> Mech </option>
+                <option> EEE</option>
+                <option> ECE</option>
+                <option> CT</option>
+            </select>
+            </div>
+            <div class="studentDetails">
+            <button type = "submit" onclick ="adddata(event)"> Save</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="student-Table">
+        <h1> Student Table</h1>
+        <table id="userTable" border="1">
+            <thead>
+                <tr>
+                    <th>SI No.</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                <!-- User data will be dynamically added here -->
+                <!-- <tr>
+                    <td></td>
+                 </tr> -->
+
+            </tbody>
+        </table>
+    </section>
+
+<script>
+
+function adddata() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let email = document.getElementById("email").value;
+    let gender = document.getElementById("gender").value;
+    let department = document.getElementById("department").value;
+    
+    let table = document.getElementById("tablebody");
+    let row = table.insertRow();
+    row.innerHTML = `<td>${row.rowIndex}</td><td>${name}</td><td>${age}</td><td>${email}</td><td>${gender}</td><td>${department}</td><td><button class='delete-btn' onclick='deleteRow(this)'>Delete</button></td>`;
+}
+
+function deleteRow(btn) {
+    let row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
+
+
+
+</script>
+
+
+
+    <!-------Script Connection-->
+    <script type="text/javascript" src="./script.js"> </script>
+</body>
+
+</html>
